@@ -1,0 +1,13 @@
+.DS_Store
+node_modules
+.next
+out
+dist
+.vercel
+.npm-cache
+docx_render
+*.log
+.env
+.env.local
+.env.*.local
+tsconfig.tsbuildinfo
