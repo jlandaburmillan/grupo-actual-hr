@@ -1,0 +1,616 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Grupo Actual HR | Landing de respaldo</title>
+    <meta
+      name="description"
+      content="Consultoría de procesos para transformar Capital Humano en la nube. Discovery funcional, arquitectura de procesos e implementación de SAP HCM and SAP SuccessFactors."
+    />
+    <meta name="theme-color" content="#0A3761" />
+    <style>
+      :root {
+        --deep-navy: #0a3761;
+        --sap-blue: #0a6ed1;
+        --electric-cyan: #00b8d9;
+        --cloud-white: #ffffff;
+        --fiori-grey: #f5f7fa;
+        --graphite-blue: #1d2d3e;
+        --line: rgba(255, 255, 255, 0.12);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        font-size: 93.75%;
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        background: var(--cloud-white);
+        color: var(--graphite-blue);
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .shell {
+        width: min(1120px, calc(100% - 32px));
+        margin: 0 auto;
+      }
+
+      .header {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        border-bottom: 1px solid var(--line);
+        background: rgba(10, 55, 97, 0.96);
+        backdrop-filter: blur(18px);
+      }
+
+      .nav {
+        display: flex;
+        min-height: 70px;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+      }
+
+      .brand {
+        display: grid;
+        line-height: 1.05;
+      }
+
+      .brand small {
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 0.66rem;
+        font-weight: 900;
+        letter-spacing: 0.24em;
+      }
+
+      .brand strong {
+        color: var(--cloud-white);
+        font-size: 1.45rem;
+        font-weight: 950;
+      }
+
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 22px;
+        color: var(--cloud-white);
+        font-size: 0.92rem;
+        font-weight: 850;
+      }
+
+      .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 8px;
+        background: var(--sap-blue);
+        color: var(--cloud-white);
+        padding: 0.9rem 1.15rem;
+        font-size: 0.92rem;
+        font-weight: 900;
+        transition: transform 180ms ease, background 180ms ease;
+      }
+
+      .button:hover {
+        transform: translateY(-2px);
+        background: #075caf;
+      }
+
+      .hero {
+        position: relative;
+        overflow: hidden;
+        background:
+          radial-gradient(circle, rgba(0, 184, 217, 0.28) 1px, transparent 1.5px) 0 0 / 32px 32px,
+          linear-gradient(90deg, rgba(255, 255, 255, 0.06) 1px, transparent 1px) 0 0 / 76px 76px,
+          linear-gradient(0deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px) 0 0 / 76px 76px,
+          var(--deep-navy);
+        color: var(--cloud-white);
+      }
+
+      .hero-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(360px, 0.86fr);
+        gap: 48px;
+        align-items: start;
+        padding: 7rem 0 6rem;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.1);
+        color: var(--electric-cyan);
+        padding: 0.68rem 1rem;
+        font-size: 0.78rem;
+        font-weight: 950;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+
+      h1 {
+        max-width: 760px;
+        margin: 1.7rem 0 0;
+        font-size: clamp(3rem, 6.3vw, 5.6rem);
+        line-height: 1.01;
+        letter-spacing: -0.02em;
+      }
+
+      .hero-copy {
+        max-width: 680px;
+        margin: 1.6rem 0 0;
+        color: rgba(255, 255, 255, 0.82);
+        font-size: 1.18rem;
+        line-height: 1.75;
+      }
+
+      .claim {
+        max-width: 680px;
+        margin: 1.4rem 0 0;
+        border-left: 4px solid var(--electric-cyan);
+        padding-left: 1.1rem;
+        font-size: 1.03rem;
+        font-weight: 900;
+        line-height: 1.7;
+      }
+
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 2rem;
+      }
+
+      .secondary {
+        border: 1px solid rgba(255, 255, 255, 0.22);
+        background: transparent;
+      }
+
+      .blueprint-card {
+        border: 1px solid rgba(255, 255, 255, 0.22);
+        border-radius: 20px;
+        background: var(--cloud-white);
+        padding: 18px;
+        color: var(--graphite-blue);
+        box-shadow: 0 30px 90px rgba(0, 0, 0, 0.22);
+      }
+
+      .blueprint-panel {
+        border-radius: 16px;
+        background:
+          radial-gradient(circle at 12% 18%, rgba(0, 184, 217, 0.22), transparent 28%),
+          linear-gradient(135deg, #0a3761 0%, #092d50 52%, #071f39 100%);
+        padding: 26px;
+        color: var(--cloud-white);
+      }
+
+      .panel-top {
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+        padding-bottom: 22px;
+      }
+
+      .panel-top p {
+        margin: 0;
+        color: var(--electric-cyan);
+        font-size: 0.8rem;
+        font-weight: 950;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+
+      .panel-top h2 {
+        margin: 0.65rem 0 0;
+        font-size: 1.75rem;
+        line-height: 1.12;
+      }
+
+      .badge {
+        align-self: start;
+        border: 1px solid rgba(0, 184, 217, 0.45);
+        border-radius: 10px;
+        color: var(--electric-cyan);
+        padding: 0.7rem 0.9rem;
+        text-align: center;
+        font-size: 0.82rem;
+        font-weight: 950;
+      }
+
+      .path {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 14px;
+        margin-top: 28px;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        border-radius: 16px;
+        background: rgba(255, 255, 255, 0.08);
+        padding: 22px;
+      }
+
+      .step span {
+        display: grid;
+        width: 34px;
+        height: 34px;
+        place-items: center;
+        border: 1px solid rgba(0, 184, 217, 0.8);
+        border-radius: 999px;
+        color: var(--electric-cyan);
+        font-weight: 950;
+      }
+
+      .step strong {
+        display: block;
+        margin-top: 1rem;
+        font-size: 0.96rem;
+        line-height: 1.2;
+      }
+
+      .step p {
+        margin: 0.5rem 0 0;
+        color: rgba(255, 255, 255, 0.72);
+        font-size: 0.82rem;
+        font-weight: 700;
+        line-height: 1.5;
+      }
+
+      .section {
+        padding: 5.8rem 0;
+      }
+
+      .section h2 {
+        max-width: 780px;
+        margin: 0;
+        color: var(--deep-navy);
+        font-size: clamp(2.2rem, 4vw, 3.35rem);
+        line-height: 1.04;
+      }
+
+      .section-lead {
+        max-width: 760px;
+        margin: 1.2rem 0 0;
+        color: rgba(29, 45, 62, 0.74);
+        font-size: 1.06rem;
+        line-height: 1.8;
+      }
+
+      .cards {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 18px;
+        margin-top: 2.2rem;
+      }
+
+      .card {
+        border: 1px solid rgba(10, 55, 97, 0.12);
+        border-radius: 14px;
+        background: var(--cloud-white);
+        padding: 24px;
+        box-shadow: 0 18px 46px rgba(29, 45, 62, 0.08);
+      }
+
+      .card small {
+        color: var(--sap-blue);
+        font-weight: 950;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .card h3 {
+        margin: 1rem 0 0;
+        color: var(--deep-navy);
+        font-size: 1.34rem;
+        line-height: 1.16;
+      }
+
+      .card p {
+        margin: 1rem 0 0;
+        color: rgba(29, 45, 62, 0.72);
+        font-size: 0.96rem;
+        font-weight: 650;
+        line-height: 1.72;
+      }
+
+      .contact {
+        background: var(--deep-navy);
+        color: var(--cloud-white);
+      }
+
+      .contact-grid {
+        display: grid;
+        grid-template-columns: 1fr 0.86fr;
+        gap: 42px;
+        align-items: start;
+      }
+
+      .contact h2 {
+        color: var(--cloud-white);
+      }
+
+      .contact p {
+        color: rgba(255, 255, 255, 0.8);
+      }
+
+      .form {
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 18px;
+        background: var(--cloud-white);
+        padding: 24px;
+        color: var(--deep-navy);
+      }
+
+      .form label {
+        display: grid;
+        gap: 8px;
+        margin-top: 14px;
+        font-size: 0.94rem;
+        font-weight: 900;
+      }
+
+      .form input,
+      .form select,
+      .form textarea {
+        width: 100%;
+        border: 1px solid rgba(10, 55, 97, 0.12);
+        border-radius: 10px;
+        background: var(--fiori-grey);
+        padding: 0.9rem 1rem;
+        color: var(--graphite-blue);
+        font: inherit;
+      }
+
+      .form textarea {
+        min-height: 128px;
+        resize: vertical;
+      }
+
+      .form .button {
+        width: 100%;
+        margin-top: 18px;
+        border: 0;
+        cursor: pointer;
+      }
+
+      .footer {
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        background: #071f39;
+        color: rgba(255, 255, 255, 0.7);
+        padding: 28px 0;
+        font-size: 0.9rem;
+        font-weight: 700;
+      }
+
+      @media (max-width: 900px) {
+        .nav-links {
+          display: none;
+        }
+
+        .hero-grid,
+        .contact-grid,
+        .cards {
+          grid-template-columns: 1fr;
+        }
+
+        .hero-grid {
+          padding: 4.6rem 0 4.4rem;
+        }
+
+        .path {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (max-width: 560px) {
+        html {
+          font-size: 90%;
+        }
+
+        .panel-top {
+          display: grid;
+        }
+
+        .path {
+          grid-template-columns: 1fr;
+        }
+
+        .actions {
+          display: grid;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="header">
+      <div class="shell nav">
+        <a class="brand" href="#inicio" aria-label="Grupo Actual HR">
+          <small>GRUPO</small>
+          <strong>Actual HR</strong>
+        </a>
+        <nav class="nav-links" aria-label="Navegación principal">
+          <a href="#servicios">Servicios</a>
+          <a href="#blueprint">Blueprint</a>
+          <a href="#soluciones">Soluciones</a>
+          <a href="#contacto">Contacto</a>
+        </nav>
+        <a class="button" href="#contacto">Solicitar diagnóstico</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero" id="inicio">
+        <div class="shell hero-grid">
+          <div>
+            <p class="eyebrow">Plano funcional de procesos de Capital Humano</p>
+            <h1>Consultoría de procesos para transformar Capital Humano en la nube</h1>
+            <p class="hero-copy">
+              Diseñamos el Discovery, los procesos y la arquitectura funcional para implementar SAP HCM and SAP SuccessFactors con trazabilidad,
+              cumplimiento y adopción real.
+            </p>
+            <p class="claim">
+              Antes de implementar, entendemos. Antes de configurar, diseñamos. Antes del sistema, está el proceso.
+            </p>
+            <div class="actions">
+              <a class="button" href="#contacto">Solicitar diagnóstico de procesos HR</a>
+              <a class="button secondary" href="#blueprint">Conocer la Ruta Blueprint</a>
+            </div>
+          </div>
+
+          <aside class="blueprint-card" aria-label="Ruta Blueprint">
+            <div class="blueprint-panel">
+              <div class="panel-top">
+                <div>
+                  <p>Ruta Blueprint</p>
+                  <h2>Arquitectura funcional HR</h2>
+                </div>
+                <div class="badge">BPML<br /><span>(Maestro de Procesos)</span></div>
+              </div>
+              <div class="path">
+                <div class="step">
+                  <span>1</span>
+                  <strong>Discovery</strong>
+                  <p>Realidad operacional</p>
+                </div>
+                <div class="step">
+                  <span>2</span>
+                  <strong>Diseño del proceso</strong>
+                  <p>Reglas, roles y flujos</p>
+                </div>
+                <div class="step">
+                  <span>3</span>
+                  <strong>Solución tecnológica</strong>
+                  <p>SAP HCM and SAP SuccessFactors</p>
+                </div>
+                <div class="step">
+                  <span>4</span>
+                  <strong>Adopción operacional</strong>
+                  <p>Uso real y sostenibilidad</p>
+                </div>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="section" id="servicios">
+        <div class="shell">
+          <h2>Del proceso al sistema, con sentido de negocio</h2>
+          <p class="section-lead">
+            Grupo Actual HR acompaña a organizaciones que necesitan claridad funcional antes de configurar tecnología. El foco está en procesos,
+            arquitectura HR, cumplimiento, trazabilidad y adopción.
+          </p>
+          <div class="cards">
+            <article class="card">
+              <small>01</small>
+              <h3>Discovery funcional</h3>
+              <p>Levantamiento de realidad operacional, dolores, riesgos, reglas locales, datos críticos y brechas de adopción.</p>
+            </article>
+            <article class="card">
+              <small>02</small>
+              <h3>Blueprint de procesos HR</h3>
+              <p>Diseño AS-IS y TO-BE, flujos, roles, controles, trazabilidad y maestro de procesos preparado para implementación.</p>
+            </article>
+            <article class="card">
+              <small>03</small>
+              <h3>SAP HCM and SAP SuccessFactors</h3>
+              <p>Arquitectura funcional para conectar procesos de Capital Humano con tecnología, integraciones y adopción operacional.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="blueprint" style="background: var(--fiori-grey)">
+        <div class="shell">
+          <h2>Ruta Blueprint para decisiones más claras</h2>
+          <p class="section-lead">
+            La landing de respaldo mantiene la narrativa central: primero entendemos el proceso, luego diseñamos la arquitectura funcional, y solo
+            después configuramos la solución tecnológica.
+          </p>
+          <div class="cards">
+            <article class="card">
+              <small>Capa negocio</small>
+              <h3>Objetivos, cumplimiento y operación</h3>
+              <p>Traducimos necesidades de negocio a criterios funcionales claros para Capital Humano.</p>
+            </article>
+            <article class="card">
+              <small>Capa proceso</small>
+              <h3>Reglas, roles y trazabilidad</h3>
+              <p>Ordenamos decisiones operacionales antes de que se transformen en configuración del sistema.</p>
+            </article>
+            <article class="card">
+              <small>Capa adopción</small>
+              <h3>Uso real y sostenibilidad</h3>
+              <p>Diseñamos pensando en colaboradores, equipos HR, soporte, continuidad y gobierno del cambio.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section contact" id="contacto">
+        <div class="shell contact-grid">
+          <div>
+            <p class="eyebrow">Contacto</p>
+            <h2>Antes de implementar tecnología, diseñemos el proceso</h2>
+            <p class="section-lead">
+              Cuéntanos el contexto de tu organización y prepararemos una conversación para evaluar Discovery, Blueprint, SAP HCM and SAP
+              SuccessFactors, integraciones o adopción.
+            </p>
+          </div>
+          <form
+            class="form"
+            action="mailto:contacto@grupoactualhr.cl"
+            method="post"
+            enctype="text/plain"
+          >
+            <label>
+              Nombre
+              <input name="Nombre" autocomplete="name" required />
+            </label>
+            <label>
+              Empresa
+              <input name="Empresa" autocomplete="organization" required />
+            </label>
+            <label>
+              Email
+              <input name="Email" type="email" autocomplete="email" required />
+            </label>
+            <label>
+              Interés principal
+              <select name="Interes">
+                <option>Discovery funcional</option>
+                <option>Blueprint de procesos HR</option>
+                <option>SAP HCM</option>
+                <option>SAP SuccessFactors</option>
+                <option>Integraciones</option>
+                <option>Adopción y gestión del cambio</option>
+              </select>
+            </label>
+            <label>
+              Necesidad
+              <textarea name="Necesidad" required></textarea>
+            </label>
+            <button class="button" type="submit">Enviar solicitud</button>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="shell">
+        Grupo Actual HR · Blueprint funcional para Capital Humano · contacto@grupoactualhr.cl
+      </div>
+    </footer>
+  </body>
+</html>
