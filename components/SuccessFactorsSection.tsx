@@ -34,7 +34,7 @@ export function SuccessFactorsSection() {
             <article key={module} className="premium-card p-5">
               <span className="block h-1 w-10 rounded-full bg-electric-cyan" />
               <h3 className="mt-5 text-lg font-black text-deep-navy">{module}</h3>
-              <p className="mt-3 text-sm font-semibold leading-6 text-graphite-blue/68">
+              <p className="mt-3 text-sm font-semibold leading-6 text-graphite-blue/70">
                 Diseño funcional, datos, controles, workflows, roles y adopción por audiencia.
               </p>
             </article>

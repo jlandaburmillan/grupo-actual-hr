@@ -69,9 +69,9 @@ export default function PanelPage() {
                   </div>
                   <div className="mt-7 grid gap-3">
                     {nextSteps.map((item) => (
-                      <div key={item} className="flex gap-3 rounded-xl border border-white/12 bg-white/8 p-4">
+                      <div key={item} className="flex gap-3 rounded-xl border border-white/10 bg-white/10 p-4">
                         <CircleDashed className="mt-0.5 shrink-0 text-electric-cyan" size={18} aria-hidden />
-                        <p className="text-sm font-bold leading-6 text-white/78">{item}</p>
+                        <p className="text-sm font-bold leading-6 text-white/80">{item}</p>
                       </div>
                     ))}
                   </div>
@@ -82,7 +82,7 @@ export default function PanelPage() {
                     <Settings2 className="text-electric-cyan" size={28} aria-hidden />
                     <h2 className="text-2xl font-black text-deep-navy">Estado técnico</h2>
                   </div>
-                  <dl className="mt-6 grid gap-4 text-sm font-bold text-graphite-blue/72">
+                  <dl className="mt-6 grid gap-4 text-sm font-bold text-graphite-blue/70">
                     <div>
                       <dt className="text-deep-navy">Build</dt>
                       <dd className="mt-1">Validado correctamente con npm run build.</dd>

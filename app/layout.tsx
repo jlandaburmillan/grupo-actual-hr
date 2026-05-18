@@ -4,6 +4,10 @@ import "./globals.css";
 
 export const metadata: Metadata = createMetadata();
 
+export const viewport = {
+  themeColor: "#0A3761"
+};
+
 export default function RootLayout({
   children
 }: Readonly<{

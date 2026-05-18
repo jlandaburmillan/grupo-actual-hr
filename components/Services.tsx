@@ -53,7 +53,7 @@ export function Services() {
             <article key={title} className="premium-card p-7">
               <Icon className="text-electric-cyan" size={32} aria-hidden />
               <h3 className="mt-6 text-2xl font-black leading-tight text-deep-navy">{title}</h3>
-              <p className="mt-4 text-sm font-semibold leading-7 text-graphite-blue/72">{text}</p>
+              <p className="mt-4 text-sm font-semibold leading-7 text-graphite-blue/70">{text}</p>
               <div className="mt-6 flex flex-wrap gap-2">
                 {items.map((item) => (
                   <span key={item} className="rounded-full bg-fiori-grey px-3 py-2 text-xs font-black text-deep-navy">

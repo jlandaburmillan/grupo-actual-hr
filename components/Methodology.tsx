@@ -24,7 +24,7 @@ export function Methodology() {
                   {index + 1}
                 </span>
                 <h3 className="mt-6 text-xl font-black text-deep-navy">{title}</h3>
-                <p className="mt-4 text-sm font-semibold leading-7 text-graphite-blue/72">{text}</p>
+                <p className="mt-4 text-sm font-semibold leading-7 text-graphite-blue/70">{text}</p>
               </article>
             ))}
           </div>

@@ -29,11 +29,11 @@ export function Footer() {
           <div>
             <div className="flex items-center gap-3">
               <span className="leading-none">
-                <span className="block text-[0.65rem] font-black uppercase tracking-[0.24em] text-white/58">GRUPO</span>
+                <span className="block text-[0.65rem] font-black uppercase tracking-[0.24em] text-white/60">GRUPO</span>
                 <span className="mt-1 block text-xl font-black text-white">Actual HR</span>
               </span>
             </div>
-            <p className="mt-5 max-w-sm text-sm font-semibold leading-7 text-white/66">
+            <p className="mt-5 max-w-sm text-sm font-semibold leading-7 text-white/70">
               Consultoría de procesos para transformar Capital Humano en la nube.
             </p>
             <p className="mt-4 text-xs font-black uppercase tracking-[0.14em] text-electric-cyan">
@@ -47,7 +47,7 @@ export function Footer() {
                 <h3 className="text-sm font-black text-white">{column.title}</h3>
                 <ul className="mt-4 grid gap-3">
                   {column.items.map((item) => (
-                    <li key={item} className="text-sm font-semibold leading-6 text-white/58">
+                    <li key={item} className="text-sm font-semibold leading-6 text-white/60">
                       {item}
                     </li>
                   ))}

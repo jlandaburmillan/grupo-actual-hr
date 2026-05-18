@@ -1,7 +1,7 @@
 "use client";
 
 import { Send } from "lucide-react";
-import { FormEvent, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import { contactInterests } from "@/content/site";
 
 type SubmitState = "idle" | "sending" | "sent" | "error";
@@ -9,6 +9,16 @@ type SubmitState = "idle" | "sending" | "sent" | "error";
 export function ContactForm() {
   const [state, setState] = useState<SubmitState>("idle");
   const [message, setMessage] = useState("");
+  const [selectedInterest, setSelectedInterest] = useState<string>(contactInterests[0]);
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const interest = params.get("interes");
+
+    if (interest && contactInterests.some((item) => item === interest)) {
+      setSelectedInterest(interest);
+    }
+  }, []);
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -18,23 +28,44 @@ export function ContactForm() {
     const form = event.currentTarget;
     const payload = Object.fromEntries(new FormData(form).entries());
 
-    const response = await fetch("/api/contact", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(payload)
-    });
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(payload)
+      });
 
-    if (!response.ok) {
+      const result = (await response.json()) as {
+        ok?: boolean;
+        fallback?: {
+          type: "mailto";
+          href: string;
+        };
+      };
+
+      if (!response.ok || !result.ok) {
+        setState("error");
+        setMessage("Revisa los datos e intenta nuevamente.");
+        return;
+      }
+
+      form.reset();
+      setSelectedInterest(contactInterests[0]);
+      setState("sent");
+
+      if (result.fallback?.href) {
+        setMessage("Solicitud preparada. Se abrirá tu correo para enviarla al equipo de Grupo Actual HR.");
+        window.location.href = result.fallback.href;
+        return;
+      }
+
+      setMessage("Solicitud recibida. El flujo ya quedó conectado para el equipo comercial.");
+    } catch {
       setState("error");
-      setMessage("Revisa los datos e intenta nuevamente.");
-      return;
+      setMessage("No pudimos enviar la solicitud. Intenta nuevamente o escribe a contacto@grupoactualhr.com.");
     }
-
-    form.reset();
-    setState("sent");
-    setMessage("Solicitud recibida. El siguiente paso es conectar este flujo al CRM o email transaccional.");
   }
 
   return (
@@ -45,7 +76,7 @@ export function ContactForm() {
             Nombre
             <input
               name="nombre"
-              className="focus-ring rounded-lg border border-deep-navy/14 bg-fiori-grey px-4 py-3 font-medium"
+              className="focus-ring rounded-lg border border-deep-navy/10 bg-fiori-grey px-4 py-3 font-medium"
               placeholder="Tu nombre"
               autoComplete="name"
               required
@@ -55,7 +86,7 @@ export function ContactForm() {
             Empresa
             <input
               name="empresa"
-              className="focus-ring rounded-lg border border-deep-navy/14 bg-fiori-grey px-4 py-3 font-medium"
+              className="focus-ring rounded-lg border border-deep-navy/10 bg-fiori-grey px-4 py-3 font-medium"
               placeholder="Nombre de empresa"
               autoComplete="organization"
               required
@@ -69,7 +100,7 @@ export function ContactForm() {
             <input
               name="email"
               type="email"
-              className="focus-ring rounded-lg border border-deep-navy/14 bg-fiori-grey px-4 py-3 font-medium"
+              className="focus-ring rounded-lg border border-deep-navy/10 bg-fiori-grey px-4 py-3 font-medium"
               placeholder="nombre@empresa.com"
               autoComplete="email"
               required
@@ -79,7 +110,7 @@ export function ContactForm() {
             Teléfono opcional
             <input
               name="telefono"
-              className="focus-ring rounded-lg border border-deep-navy/14 bg-fiori-grey px-4 py-3 font-medium"
+              className="focus-ring rounded-lg border border-deep-navy/10 bg-fiori-grey px-4 py-3 font-medium"
               placeholder="+56 9..."
               autoComplete="tel"
             />
@@ -90,8 +121,9 @@ export function ContactForm() {
           Interés principal
           <select
             name="interes"
-            className="focus-ring rounded-lg border border-deep-navy/14 bg-fiori-grey px-4 py-3 font-medium"
-            defaultValue={contactInterests[0]}
+            className="focus-ring rounded-lg border border-deep-navy/10 bg-fiori-grey px-4 py-3 font-medium"
+            value={selectedInterest}
+            onChange={(event) => setSelectedInterest(event.target.value)}
             required
           >
             {contactInterests.map((interest) => (
@@ -104,7 +136,7 @@ export function ContactForm() {
           Necesidad
           <textarea
             name="necesidad"
-            className="focus-ring min-h-32 resize-y rounded-lg border border-deep-navy/14 bg-fiori-grey px-4 py-3 font-medium"
+            className="focus-ring min-h-32 resize-y rounded-lg border border-deep-navy/10 bg-fiori-grey px-4 py-3 font-medium"
             placeholder="Cuéntanos el contexto: Discovery, blueprint, SAP HCM and SAP SuccessFactors, integraciones, adopción..."
             required
           />

@@ -23,13 +23,13 @@ export function IndustriesSection() {
           <div>
             <p className="text-sm font-black uppercase tracking-[0.1em] text-electric-cyan">Industrias objetivo</p>
             <h2 className="mt-4 text-balance text-4xl font-black leading-tight md:text-5xl">Diseñado para organizaciones con procesos complejos de Capital Humano</h2>
-            <p className="mt-6 text-lg leading-8 text-white/74">
+            <p className="mt-6 text-lg leading-8 text-white/75">
               Grupo Actual HR está orientado a empresas medianas y grandes con procesos complejos de RR.HH., alta dotación, operación distribuida, contratistas, cumplimiento laboral y necesidades de trazabilidad.
             </p>
           </div>
           <div className="grid gap-3 sm:grid-cols-2">
             {industries.map((industry) => (
-              <span key={industry} className="rounded-xl border border-white/12 bg-white/8 px-4 py-3 text-sm font-black text-white transition hover:border-electric-cyan/45 hover:bg-white/12">
+              <span key={industry} className="rounded-xl border border-white/10 bg-white/10 px-4 py-3 text-sm font-black text-white transition hover:border-electric-cyan/50 hover:bg-white/10">
                 {industry}
               </span>
             ))}

@@ -20,7 +20,7 @@ export function AudienceMessages() {
           {audiences.map(([role, message]) => (
             <article key={role} className="premium-card p-6">
               <h3 className="text-xl font-black text-deep-navy">{role}</h3>
-              <p className="mt-4 text-sm font-semibold leading-7 text-graphite-blue/72">{message}</p>
+              <p className="mt-4 text-sm font-semibold leading-7 text-graphite-blue/70">{message}</p>
             </article>
           ))}
         </div>

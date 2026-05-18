@@ -38,7 +38,7 @@ export function PackagedSolutions() {
           {solutions.map((solution) => (
             <article key={solution.title} className="premium-card p-7">
               <h3 className="text-2xl font-black text-deep-navy">{solution.title}</h3>
-              <p className="mt-4 text-sm font-semibold leading-7 text-graphite-blue/72">{solution.objective}</p>
+              <p className="mt-4 text-sm font-semibold leading-7 text-graphite-blue/70">{solution.objective}</p>
               <p className="mt-6 text-xs font-black uppercase tracking-[0.1em] text-sap-blue">Entregables</p>
               <div className="mt-4 flex flex-wrap gap-2">
                 {solution.deliverables.map((item) => (

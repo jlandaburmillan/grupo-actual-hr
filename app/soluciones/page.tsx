@@ -26,7 +26,7 @@ export default function SolucionesPage() {
             <h1 className="mt-4 text-balance text-4xl font-black leading-tight md:text-6xl">
               Rutas comerciales para ordenar decisiones antes de implementar tecnología
             </h1>
-            <p className="mt-7 text-lg leading-9 text-white/76">
+            <p className="mt-7 text-lg leading-9 text-white/75">
               Cada solución empaquetada traduce la Ruta Blueprint en entregables claros, trazables y accionables para equipos de negocio, tecnología y Capital Humano.
             </p>
           </div>

@@ -30,7 +30,7 @@ export function BrandEssence() {
             <article key={title} className="premium-card p-7">
               <Icon className="text-electric-cyan" size={30} aria-hidden />
               <h3 className="mt-6 text-2xl font-black text-deep-navy">{title}</h3>
-              <p className="mt-4 text-sm font-semibold leading-7 text-graphite-blue/72">{text}</p>
+              <p className="mt-4 text-sm font-semibold leading-7 text-graphite-blue/70">{text}</p>
             </article>
           ))}
         </div>
