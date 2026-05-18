@@ -1,7 +1,7 @@
 export const siteConfig = {
   name: "Grupo Actual HR",
   url: process.env.NEXT_PUBLIC_SITE_URL || "https://grupoactualhr.com",
-  email: "contacto@grupoactualhr.com",
+  email: "contacto@grupoactualhr.cl",
   logoLines: ["GRUPO", "Actual HR"],
   concept: "Blueprint funcional para Capital Humano",
   visualTerritory: "Ruta Blueprint",

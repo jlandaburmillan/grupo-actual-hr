@@ -64,7 +64,7 @@ export function ContactForm() {
       setMessage("Solicitud recibida. El flujo ya quedó conectado para el equipo comercial.");
     } catch {
       setState("error");
-      setMessage("No pudimos enviar la solicitud. Intenta nuevamente o escribe a contacto@grupoactualhr.com.");
+      setMessage("No pudimos enviar la solicitud. Intenta nuevamente o escribe a contacto@grupoactualhr.cl.");
     }
   }
 
